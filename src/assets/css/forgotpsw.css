@@ -1,0 +1,30 @@
+/* forget psw css start*/
+.form_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 10px;
+  }
+  .key_icon {
+    background: #856ECE26;
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+  }
+  .forgot-container .form_title, .verification-container .form_title, .change_psw_container .form_title{
+    margin-bottom: 2px
+  }
+  span.frgtpsw_txt {
+    color: #201D1D;
+      font-weight: 400;
+      opacity: 0.7;
+      font-size: clamp(14px, 4vw, 16px);
+      text-align: center;
+  }
+  .forgot-container .form-action, .verification-container .form-action{
+    margin: 34px 0 39px 0;
+  }

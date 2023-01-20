@@ -1,0 +1,306 @@
+.page-inner-wrapper {
+    min-height: calc(100vh - 64px);
+}
+.page-header {
+    background: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+.logo-text {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 40px;
+    color: #000;
+    padding-left: 10px;
+}
+.customer-post {
+    background: rgba(13, 136, 242, 0.1);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    padding: 10px 9px;
+    margin-right: 18px;
+}
+.customer-trigger {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: #040b16;
+    min-width: 100px;
+}
+.customer-trigger .fa {
+    padding-left: 10px;
+}
+.customer-trigger:after {
+    display: none;
+}
+.customer-trigger.show .fa {
+    transform: rotate(180deg);
+}
+.left-navbar {
+    background: #18212a;
+    max-width: 60px;
+    width: 100%;
+    padding: 14px 12px;
+}
+.left-navbar .navbar-item {
+    margin-bottom: 12px;
+}
+.left-navbar .navbar-item a {
+    width: 36px;
+    height: 36px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.left-navbar .navbar-item a:hover {
+    border-radius: 6px;
+}
+.left-navbar .navbar-item a:hover path {
+    fill: red;
+}
+.left-navbar .navbar-item a.setting-item:hover path {
+    fill: none;
+    stroke: red;
+}
+.left-navbar .navbar-item.active a {
+    background: red;
+    border-radius: 6px;
+    color: red;
+}
+.left-navbar .navbar-item.active a path {
+    fill: red;
+}
+.left-navbar .navbar-item.active a.setting-item path {
+    fill: none;
+    stroke: red;
+}
+.page-inner-content {
+    padding: 15px 15px 0;
+    width: 100%;
+    max-width: calc(100% - 60px);
+}
+.page-inner-content .card {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px 10px 0 0;
+    border: 0;
+}
+.page-inner-content .card-header {
+    border: 0;
+    padding: 24px 24px 10px;
+}
+.page-inner-content .card-header:first-child {
+    border-radius: 10px 10px 0 0;
+}
+.page-inner-content .card-body {
+    padding: 10px 24px 24px;
+}
+.card-header .btn {
+    color: #fff;
+}
+.card-header-left .card-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+}
+.credit-remaining-text {
+    color: #ea3f95;
+    font-weight: 600;
+    font-size: 12px;
+}
+.more-credits-col a {
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 12px;
+}
+.search-col {
+    max-width: 210px;
+}
+.search-col .input-group-text {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    z-index: 5;
+    background: none;
+    border: none;
+}
+.search-col .form-control {
+    border-radius: 5px !important;
+    font-weight: 400;
+    font-size: 12px;
+    padding: 5px 5px 5px 35px;
+    width: 100%;
+    height: 34px;
+}
+.sortby-col select {
+    width: 158px;
+    border-radius: 5px;
+}
+.animation-thead {
+    padding: 0 10px;
+    background: #f2f2f2;
+    border-radius: 10px 10px 0 0;
+    display: grid;
+    grid-template-columns: 130px 230px 280px 280px 230px;
+}
+.animation-thead .animation-th {
+    padding: 15px 8px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #a0a0a0;
+}
+.animation-thead .animation-th img {
+    margin-left: 8px;
+}
+.animation-table {
+    width: 100%;
+    overflow-x: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.animation-thead .animation-col img, .animation-tbody .animation-col img {
+    max-height: 90px;
+    width: auto;
+}
+.animation-thead .agenda-col span, .animation-tbody .agenda-col span {
+    display: block;
+}
+.animation-thead .agenda-col .agenda-status, .animation-tbody .agenda-col .agenda-status {
+    font-weight: 700;
+    font-size: 14px;
+}
+.animation-thead .agenda-col a, .animation-tbody .agenda-col a {
+    font-weight: 700;
+}
+.animation-thead .status-col .animation-status, .animation-tbody .status-col .animation-status {
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    margin: 0 4px;
+}
+.animation-thead .animation-name, .animation-tbody .animation-name {
+    font-weight: 700;
+    font-size: 18px;
+    display: block;
+}
+.animation-thead .animation-reaction, .animation-tbody .animation-reaction {
+    display: block;
+}
+.animation-tbody .animation-tr {
+    border: 1px solid #f2f2f2;
+    border-top: 0;
+    padding: 0 10px;
+    color: #040b16;
+    font-weight: 400;
+    font-size: 12px;
+    display: grid;
+    grid-template-columns: 130px 230px 280px 280px 230px;
+}
+.animation-tbody .animation-td {
+    padding: 10px 8px;
+}
+.menu-hamburger {
+    display: none;
+}
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 20px;
+        padding-left: 5px;
+   }
+    .customer-post {
+        margin-right: 12px;
+   }
+    .customer-trigger {
+        font-size: 16px;
+   }
+    .menu-hamburger {
+        padding-right: 10px;
+        display: block;
+   }
+    .menu-hamburger.navbar-open::before {
+        content: '';
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 40;
+   }
+    .left-navbar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 50;
+        transition: transform 0.3s ease-in-out;
+        transform: translateX(-100%);
+        overflow-y: auto;
+   }
+    .left-navbar.navbar-open {
+        transform: translateX(0);
+   }
+    .page-inner-content {
+        max-width: 100%;
+   }
+    .page-inner-content .card-header {
+        padding: 15px 15px 10px;
+   }
+    .page-inner-content .card-body {
+        padding: 10px 15px 15px;
+   }
+    .card-header-left {
+        width: 100%;
+        margin-bottom: 10px;
+   }
+    .animation-thead {
+        padding: 0;
+        grid-template-columns: 90px 200px 200px 200px 200px;
+   }
+    .animation-tbody .animation-tr {
+        padding: 0;
+        grid-template-columns: 90px 200px 200px 200px 200px;
+   }
+    .animation-tbody .status-col, .animation-thead .status-col {
+        display: flex;
+        align-items: center;
+   }
+    .animation-tbody .status-col .animation-status, .animation-thead .status-col .animation-status {
+        width: 24px;
+        height: 24px;
+   }
+}
+@media (max-width: 576px) {
+    .logo-col img {
+        max-height: 28px;
+        width: auto;
+   }
+    .logo-text {
+        font-size: 16px;
+   }
+    .customer-trigger {
+        font-size: 14px;
+        min-width: auto;
+   }
+    .card-header-left .card-title {
+        width: 100%;
+   }
+    .search-col {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 10px;
+   }
+    .sortby-col {
+        width: 100%;
+   }
+    .sortby-col select {
+        width: 100%;
+   }
+    .btn-createanimation {
+        width: 100%;
+   }
+}

@@ -1,0 +1,22 @@
+export const Messages = {
+  RESET_PASSWORD_LINK_SEND: `We have e-mailed your password reset link !`,
+  SOMETHING_WENT_WRONG: `Something went wrong`,
+  IS_REQUIRED: `is Required`,
+  IS_INVALID: `is Invalid`,
+  RESET_PASSWORD_SUCCESS: `Password Changed Successfully !`,
+  PASSWORD_MUST_BE_SAME: `Password and Confirm password must be same !`,
+  PASSWORD_MIN: `Password length must be 6 character`,
+  REGISTER_USER: `Account created successfully , We wil send activation email.`,
+  LOGIN_SUCCESS: `You are successfully logged in`,
+  ACCOUNT_VERIFIED: `Account Verified successfully`,
+  LOGOUT_SUCCESS: `You have successfully logged out!`,
+  PAYMENT_SUCCESS: `We are delighted to inform you that we received your payments`,
+  PAYMENT_CANCEL: `Your order was not processed`,
+  LOGIN_FIRST: `You need to login first`,
+  EMPTY_CART: `Your shopping cart is empty !`,
+  MAIL_SENT: `Mail sent !`,
+  SUBSCRIBED: `Subscribed successfully !`,
+  INVALID_EMAIL: `Please Enter Valid Email Address`,
+  MESSAGE_MAX_LENGTH: `Message characters must be less than 500 characters`,
+
+};

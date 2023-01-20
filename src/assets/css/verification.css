@@ -1,0 +1,13 @@
+/* verification css start */
+@media(min-width:768px){
+.verification-container, .change_psw_container{
+    max-width: 43%;
+    width: 100%;
+}
+.verification-container form.sign-up, .change_psw_container form.sign-up{
+    max-width: 26%;
+    width: 100%;
+    min-width: 385px;
+    margin: 0 auto;
+}
+}
