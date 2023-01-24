@@ -9,6 +9,8 @@ import {
 import { validateAll } from "indicative/validator";
 import { Messages } from "../../common/msg"
 import React, { useState } from "react";
+import ApiCall from "../../Api/index"
+import ToastAlert from "../../common/ToastAlert";
 
 function Index() {
 
@@ -50,7 +52,22 @@ function Index() {
                     ...formData,
                     error: {},
                 });
-                // dispatch(setToken('sdhgasidhuoashdu'))
+                
+                let data = {
+                    email: email,
+                    password: password,
+                    device_id: '454545',
+                    platform: 3
+                }
+                dispatch(setLoading(true))
+                const login = await ApiCall('messagecenter/login', 'post', data);
+                console.log(login)
+                if (login.error) {
+                    dispatch(setLoading(false))
+                    ToastAlert({ title: "Login", msg: login.error.message || 'Login Failed', msgType: "error" })
+                }else{
+
+                }
             })
             .catch((errors) => {
                 const formaerrror = {};
