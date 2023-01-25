@@ -23,6 +23,8 @@ function Index() {
         email: "",
         password: "",
         error: {},
+        login_error : '',
+        input_type : 'password'
     });
 
     const { email, password, error } = formData;
@@ -66,9 +68,19 @@ function Index() {
                 const login = await ApiCall('messagecenter/login', 'post', payload);
                 if (login.error) {
                     dispatch(setLoading(false))
-                    ToastAlert({ title: "Login", msg: login?.error?.response?.data?.MESSAGE || login.error.message, msgType: "error" })
+                    //ToastAlert({ title: "Login", msg: login?.error?.response?.data?.MESSAGE || login.error.message, msgType: "error" })
+                    console.log(login?.error?.response?.data?.MESSAGE || login.error.message);
+                    setFormData({
+                        ...formData,
+                        login_error: login?.error?.response?.data?.MESSAGE || login.error.message,
+                    });
                 } else {
                     dispatch(setLoading(false))
+                    setFormData({
+                        ...formData,
+                        login_error : '',
+                        input_type: 'password',
+                    });
                     dispatch(setUserDetails(login?.data?.RESULT))
                     dispatch(setToken(login?.data?.RESULT.accessToken))
                     ToastAlert({ title: "Login", msg: login?.data?.MESSAGE, msgType: "success" })
@@ -93,11 +105,18 @@ function Index() {
             });
     };
 
+    const showPassword = async () => {
+        setFormData({
+            ...formData,
+            input_type: 'text',
+        });
+    }
+
 
 
     return (
 
-        <Login formData={formData} handleForm={handleForm} submitForm={submitForm} />
+        <Login formData={formData} handleForm={handleForm} submitForm={submitForm} showPassword={showPassword} />
     )
 
 }

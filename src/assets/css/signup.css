@@ -151,3 +151,12 @@ span.psw-icon {
       max-width: 80%;
     }
 }
+
+.error-msg-icon {
+  width: 10px;
+  height: 10px;
+  margin-bottom: 10px;
+  display: block;
+  bottom: -23px;
+  position: absolute;
+}
