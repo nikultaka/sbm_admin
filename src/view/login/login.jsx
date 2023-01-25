@@ -16,7 +16,7 @@ function Login({ formData, handleForm, submitForm, showPassword }) {
                                 {formData.error && formData.error.email && <span className="error-msg">{formData.error.email}</span>}
                             </div>
                             <div className="form-control">
-                                <input type={formData.input_type} name="password" id='password' value={formData.password} onChange={handleForm} className="form-input" placeholder="none" />
+                                <input type={formData.input_type ? 'password':'text'} name="password" id='password' value={formData.password} onChange={handleForm} className="form-input" placeholder="none" />
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <span className="psw-icon" onClick={showPassword}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.9834 10C12.9834 11.65 11.6501 12.9833 10.0001 12.9833C8.35006 12.9833 7.01672 11.65 7.01672 10C7.01672 8.35 8.35006 7.01667 10.0001 7.01667C11.6501 7.01667 12.9834 8.35 12.9834 10Z" stroke="#201D1D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

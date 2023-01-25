@@ -24,7 +24,7 @@ function Index() {
         password: "",
         error: {},
         login_error : '',
-        input_type : 'password'
+        input_type : true
     });
 
     const { email, password, error } = formData;
@@ -108,7 +108,7 @@ function Index() {
     const showPassword = async () => {
         setFormData({
             ...formData,
-            input_type: 'text',
+            input_type: !formData.input_type,
         });
     }
 
