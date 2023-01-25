@@ -29,7 +29,7 @@ function Login({ formData, handleForm, submitForm }) {
                             </div>
                         </form>
                         <div className="action-text">
-                            <span>I forget my credentials. <Link to="#"> Reset Password</Link> </span>
+                            <span>I forget my credentials. <Link to="/forgot-password"> Reset Password</Link> </span>
                         </div>
                     </div>
                 </div>

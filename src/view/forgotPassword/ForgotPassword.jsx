@@ -31,7 +31,7 @@ function ForgotPassword() {
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.0834 7H2.91675" stroke="black" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M7.00008 11.0833L2.91675 7L7.00008 2.91667" stroke="black" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg> <span>Back to <Link to="/signup"> Login </Link></span>
+                            </svg> <span>Back to <Link to="/login"> Login </Link></span>
                         </div>
                     </div>
                 </div>
