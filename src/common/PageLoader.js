@@ -5,7 +5,6 @@ const PageLoader = () => {
     return (
         <div className={loading ? "preloader" : ""}>
             <div className="preloader-icon"></div>
-            <span>{loading ? "Loading..." : ""}</span>
         </div>
     )
 }
