@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom"
 // import Logo from "../../components/Logo"
 import WavingHand from "../assets/images/waving-hand.png"
+import stateBuildingImage from "../assets/images/state-building.png"
+import arrowDownImage from "../assets/images/arrow-down.svg"
+import userImage from "../assets/images/user-img.png"
+import { useState } from "react"
 
 function Header() {
+
+    const [profileState, setProfileState] = useState(false);
+    const showHideProfileDropdown = () => {
+        setProfileState(!profileState)
+    }
     
     return (
         <header className="page-header">
@@ -16,19 +25,19 @@ function Header() {
                     </div>
                     <div className="header-right">
                         <div className="state-column">
-                            <div className="state-dropdown">
+                            <div className="state-dropdown" onClick={showHideProfileDropdown}>
                                 <div className="state-dropdown-icon">
-                                    <img src="images/state-building.png" alt="Building" width="34" height="34" />
+                                    <img src={stateBuildingImage} alt="Building" width="34" height="34" />
                                 </div>
                                 <div className="state-dropdown-text">
                                     <span className="small">United States</span>
                                     <span className="state-name">Andrew Cafe</span>
                                 </div>
                                 <div className="state-dropdown-arrow">
-                                    <img src="images/arrow-down.svg" alt="Arrow" width="16" height="16" />
+                                    <img src={arrowDownImage} alt="Arrow" width="16" height="16" />
                                 </div>
                             </div>
-                            <div className="state-dropdown-list">
+                            <div className={profileState ?" dropdown-active state-dropdown-list" : "state-dropdown-list"} >
                                 <ul className="state-dropdown-items">
                                     <li className="state-dropdown-item">
                                         <a href="#">Andrew Cafe</a>
@@ -44,7 +53,7 @@ function Header() {
                         </div>
                         <div className="header-user">
                             <span className="header-user-img">
-                                <img src="images/user-img.png" alt="User" width="44" height="44" />
+                                <img src={userImage} alt="User" width="44" height="44" />
                             </span>
                         </div>
                     </div>
