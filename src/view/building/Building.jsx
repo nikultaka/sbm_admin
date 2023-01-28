@@ -9,7 +9,8 @@ import buildingSVGImage from "../../assets/images/building.svg"
 import arrowDownImage from "../../assets/images/arrow-down.svg"
 import sortImage from "../../assets/images/sort.svg"
 
-function Building() {
+function Building({siteName,siteNameDropdown,location,locatonDropdown,sort,sortDropdown}) {
+
     return(
         <div className="column-main-wrapper">
                     <div className="column-main-container">
@@ -22,12 +23,12 @@ function Building() {
                                     <div className="topbar-icon-col">
                                         <img src={buildingSVGImage} alt="building" width="16" height="16" />
                                     </div>
-                                    <div className="topbar-dropdown">
+                                    <div className="topbar-dropdown" onClick={siteNameDropdown}>
                                         <div className="topbar-dropdown-toggle">
                                             <span className="topbar-dropdown-text">Site name</span>
                                             <span className="topbar-dropdown-arrow"><img src={arrowDownImage} alt="Arrow" width="16" height="16" /></span>
                                         </div>
-                                        <ul className="topbar-dropdown-items">
+                                        <ul className={ siteName ? "topbar-dropdown-items dropdown-active" : "topbar-dropdown-items"}>
                                             <li className="topbar-dropdown-item"><a href="#">Heaven</a></li>
                                             <li className="topbar-dropdown-item"><a href="#">Home</a></li>
                                             <li className="topbar-dropdown-item"><a href="#">Garden</a></li>
@@ -39,12 +40,12 @@ function Building() {
                                     <div className="topbar-icon-col">
                                         <img src={LocationImage} alt="location" width="16" height="16" />
                                     </div>
-                                    <div className="topbar-dropdown">
+                                    <div className="topbar-dropdown" onClick={locatonDropdown}>
                                         <div className="topbar-dropdown-toggle">
                                             <span className="topbar-dropdown-text">Location</span>
                                             <span className="topbar-dropdown-arrow"><img src={arrowDownImage} alt="Arrow" width="16" height="16" /></span>
                                         </div>
-                                        <ul className="topbar-dropdown-items">
+                                        <ul className={ location ? "topbar-dropdown-items dropdown-active" : "topbar-dropdown-items"}>
                                             <li className="topbar-dropdown-item"><a href="#">2174 Hardesty Street, Elkins, Montana</a></li>
                                             <li className="topbar-dropdown-item"><a href="#">2174 Hardesty Street, Elkins, Montana</a></li>
                                             <li className="topbar-dropdown-item"><a href="#">2174 Hardesty Street, Elkins, Montana</a></li>
@@ -52,11 +53,11 @@ function Building() {
                                     </div>
                                 </div>
                                 <div className="topbar-col sort-col">
-                                    <div className="topbar-dropdown">
+                                    <div className="topbar-dropdown" onClick={sortDropdown}>
                                         <div className="topbar-dropdown-toggle">
                                             <img src={sortImage} alt="sort" width="16" height="16" />
                                         </div>
-                                        <ul className="topbar-dropdown-items">
+                                        <ul className={ sort ? "topbar-dropdown-items dropdown-active" : "topbar-dropdown-items"}>
                                             <li className="topbar-dropdown-item"><a href="#">New</a></li>
                                             <li className="topbar-dropdown-item"><a href="#">Old</a></li>
                                         </ul>
