@@ -1,0 +1,31 @@
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/outfit/Outfit-Bold.woff2') format('woff2'), url('../fonts/outfit/Outfit-Bold.woff') format('woff'), url('../fonts/outfit/Outfit-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/outfit/Outfit-Regular.woff2') format('woff2'), url('../fonts/outfit/Outfit-Regular.woff') format('woff'), url('../fonts/outfit/Outfit-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/outfit/Outfit-Medium.woff2') format('woff2'), url('../fonts/outfit/Outfit-Medium.woff') format('woff'), url('../fonts/outfit/Outfit-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/outfit/Outfit-SemiBold.woff2') format('woff2'), url('../fonts/outfit/Outfit-SemiBold.woff') format('woff'), url('../fonts/outfit/Outfit-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
