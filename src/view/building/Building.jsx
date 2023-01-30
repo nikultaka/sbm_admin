@@ -9,7 +9,7 @@ import buildingSVGImage from "../../assets/images/building.svg"
 import arrowDownImage from "../../assets/images/arrow-down.svg"
 import sortImage from "../../assets/images/sort.svg"
 
-function Building({siteName,siteNameDropdown,location,locatonDropdown,sort,sortDropdown}) {
+function Building({siteName,siteNameDropdown,location,locatonDropdown,sort,sortDropdown,buildingList}) {
 
     return(
         <div className="column-main-wrapper">
@@ -67,316 +67,48 @@ function Building({siteName,siteNameDropdown,location,locatonDropdown,sort,sortD
                         </div>
                         <div className="column-list-section">
                             <div className="site-items">
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
+                                {
+                                    buildingList?.length>0 ? 
+                                    buildingList?.map(building => {
+                                 
+                                        return(
+                                        <div className="site-item">
+                                            <div className="site-item-col">
+                                                <div className="site-item-img">
+                                                    <img src={buildingImage} alt="Home" width="282" height="167" />
                                                 </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
+                                                <div className="site-item-detail">
+                                                    <div className="site-item-name">
+                                                        {building.name}
+                                                    </div>
+                                                    <div className="site-item-location">
+                                                        <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
+                                                        <span className="text">{building.full_address}</span>
+                                                    </div>
+                                                    <div className="site-item-time">
+                                                        <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
+                                                        <span className="text">08:10 - 10:10</span>
+                                                    </div>
+                                                    <div className="site-user-detail">
+                                                        <div className="site-user-left">
+                                                            <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
+                                                            <span className="text">David Jordan</span>
+                                                        </div>
+                                                        <div className="site-user-right">
+                                                            <a href="#">
+                                                                <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="site-item">
-                                    <div className="site-item-col">
-                                        <div className="site-item-img">
-                                            <img src={buildingImage} alt="Home" width="282" height="167" />
-                                        </div>
-                                        <div className="site-item-detail">
-                                            <div className="site-item-name">
-                                                Dream heaven
-                                            </div>
-                                            <div className="site-item-location">
-                                                <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
-                                                <span className="text">2174 Hardesty Street, Elkins, Montana</span>
-                                            </div>
-                                            <div className="site-item-time">
-                                                <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                <span className="text">08:10 - 10:10</span>
-                                            </div>
-                                            <div className="site-user-detail">
-                                                <div className="site-user-left">
-                                                    <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                    <span className="text">David Jordan</span>
-                                                </div>
-                                                <div className="site-user-right">
-                                                    <a href="#">
-                                                        <span className="icon"><img src={phoneImage} alt="phone" width="24" height="24" /></span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        )
+                                    })
+                                    :
+                                    ''
+                                }
+                                
                             </div>
                         </div>
 

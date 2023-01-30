@@ -12,6 +12,8 @@ function Header() {
     const showHideProfileDropdown = () => {
         setProfileState(!profileState)
     }
+
+    
     
     return (
         <header className="page-header">
