@@ -87,12 +87,12 @@ function Building({siteName,siteNameDropdown,location,locatonDropdown,sort,sortD
                                                     </div>
                                                     <div className="site-item-time">
                                                         <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
-                                                        <span className="text">08:10 - 10:10</span>
+                                                        <span className="text">-</span>
                                                     </div>
                                                     <div className="site-user-detail">
                                                         <div className="site-user-left">
                                                             <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
-                                                            <span className="text">David Jordan</span>
+                                                            <span className="text">{ building?.buildingmanager !=null && building?.buildingmanager?.users.name }</span>
                                                         </div>
                                                         <div className="site-user-right">
                                                             <a href="#">

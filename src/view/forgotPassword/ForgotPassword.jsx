@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Logo from "../../components/Logo"
 
-function ForgotPassword() {
+function ForgotPassword({sendEmail,handleForm,formData}) {
     
     return (
         <div className="page-wrapper login-pagewrapper">
@@ -20,11 +20,17 @@ function ForgotPassword() {
                         </div>
                         <form name="signup" className="sign-up">
                             <div className="form-control">
-                                <input type="email" name="email" className="form-input" placeholder="none" required />
+                                <input type="email" name="email" className="form-input" id="email" placeholder="none" required onChange={handleForm} />
                                 <label for="email" className="form-label">Email address</label>
+                                {formData.error && formData.error.email && <span className="error-msg">{formData.error.email}</span>}
+                                { formData.forgot_error && <>
+                                    <img className="error-msg-icon" src="../assets/images/Subtract.png" />
+                                    <span className="error-msg" style={{ bottom : "-39px" }}>{formData.forgot_error}</span>
+                                    </>
+                                }
                             </div>
                             <div className="form-action">
-                                <button type="submit" className="form-btn sign-btn">Reset Password</button>
+                                <button type="button" className="form-btn sign-btn" onClick={sendEmail}>Reset Password</button>
                             </div>
                         </form>
                         <div className="action-text">
@@ -39,4 +45,4 @@ function ForgotPassword() {
         </div>
     )
 }
-export default ForgotPassword
+export default ForgotPassword 
