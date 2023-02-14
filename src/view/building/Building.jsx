@@ -71,9 +71,10 @@ function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort,
                         {
                             buildingList?.length > 0 ?
                                 buildingList?.map(building => {
-
+                                    let newDate = new Date()
+                                    let monthID = newDate.getMonth() + 1;
                                     return (
-                                        <div className="site-item" onClick={() => delivery(building?.id, 10)} style={{ cursor: 'pointer' }} >
+                                        <div className="site-item" onClick={() => delivery(building?.id, monthID)} style={{ cursor: 'pointer' }} >
                                             <div className="site-item-col">
                                                 <div className="site-item-img">
                                                     <img src={buildingImage} alt="Home" width="282" height="167" />

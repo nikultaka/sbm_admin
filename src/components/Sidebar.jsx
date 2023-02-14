@@ -16,9 +16,9 @@ function Sidebar() {
             {/* <div className="sidebar-overlay desktop-hide"></div> */}
             <div className="sidebar-main">
                 <div className="sidebar-head">
-                    <a href="index.html">
+                    <Link to="/">
                         <img src={LogoImg} alt="logo" width="40" height="40" />
-                    </a>
+                    </Link>
                 </div>
                 <div className="sidebar-body">
                     <ul className="sidebar-items">

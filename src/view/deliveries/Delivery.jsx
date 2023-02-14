@@ -26,7 +26,7 @@ ChartJS.register(
 );
 
 
-function Delivery({ deliveryCount, graphFilter, sort }) {
+function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData }) {
 
     const { id, month } = useParams();
     const ref = useRef(null);
@@ -35,7 +35,7 @@ function Delivery({ deliveryCount, graphFilter, sort }) {
         plugins: {
             title: {
                 display: true,
-                text: 'Delivery',
+                text: '',
             },
             legend: {
                 position: "top",
@@ -53,7 +53,7 @@ function Delivery({ deliveryCount, graphFilter, sort }) {
         }
     };
 
-    const chartType = 2;
+    const chartType = sortType;
     let monthData = [];
     let labels;
     if (chartType == '1') {
@@ -163,12 +163,12 @@ function Delivery({ deliveryCount, graphFilter, sort }) {
                         <div className="topbar-col monthly-col">
                             <div className="topbar-dropdown" ref={ref} onClick={() => graphFilter()}>
                                 <div className="topbar-dropdown-toggle">
-                                    <span className="topbar-dropdown-text" id="dropdown-graph">Monthly</span>
+                                    <span className="topbar-dropdown-text">{ sortType == '1' ? "Monthly" : "Yearly" }</span>
                                     <span className="topbar-dropdown-arrow"><img src={arrowDownImage} alt="Arrow" width="12" height="12" /></span>
                                 </div>
                                 <ul className={sort ? "topbar-dropdown-items dropdown-active" : "topbar-dropdown-items"}>
-                                    <li className="topbar-dropdown-item" ref={ref} id="1" onClick={() => graphFilter(1)}><a href="#">Monthly</a></li>
-                                    <li className="topbar-dropdown-item" ref={ref} id="2" onClick={() => graphFilter(2)}><a href="#">Year</a></li>
+                                    <li className="topbar-dropdown-item" onClick={() => graphFilterData(1)}><a href="#">Monthly</a></li>
+                                    <li className="topbar-dropdown-item" onClick={() => graphFilterData(2)}><a href="#">Year</a></li>
                                 </ul>
                             </div>
                         </div>

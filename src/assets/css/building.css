@@ -874,11 +874,11 @@ a:not([href]):not([class]):hover {
 }
 
 .report-item-box.incoming-box .report-icon {
-    background: #60A65A;
+    background: #856ECE;
 }
 
 .report-item-box.outgoing-box .report-icon {
-    background: #856ECE;
+    background: #60A65A;
 }
 
 .report-item-box.escorts-box .report-icon {

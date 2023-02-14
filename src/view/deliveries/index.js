@@ -17,16 +17,20 @@ function Index() {
   const dispatch = useDispatch()
   const { id, month } = useParams();
   const [sort, setSort] = useState(false)
-  const [sortText, setSortText] = useState()
+  const [sortType, setSortType] = useState(2)
   const ref = useRef(null);
 
   const graphFilter = (id) => {
     setSort(!sort)
   }
 
+  const graphFilterData = (id) => {
+    setSortType(id);
+  }
+
   useEffect(() => {
     (async () => {
-      const deliveryCount = await ApiCall('v1/delivery-count-web/' + id + '/' + month, 'get', null, token);
+      const deliveryCount = await ApiCall('v1/delivery-count-web/' + id + '/' + month+'/2', 'get', null, token);
       if (deliveryCount.data) {
         setDeliveryCount(deliveryCount?.data?.RESULT);
       } else {
@@ -41,7 +45,7 @@ function Index() {
   // console.log(token)
 
   return (
-    <Delivery deliveryCount={deliveryCount} graphFilter={graphFilter} sort={sort} />
+    <Delivery deliveryCount={deliveryCount} graphFilter={graphFilter} sort={sort} sortType={sortType} graphFilterData={graphFilterData} />
   )
 }
 export default Index
