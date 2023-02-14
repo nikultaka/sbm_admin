@@ -803,3 +803,273 @@ a:not([href]):not([class]):hover {
         width: 100%;
     }
 }
+
+
+/* Delivery page 01022023 */
+
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.report-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.report-item {
+    width: 33.33%;
+    padding-right: 20px;
+    margin-bottom: 20px;
+}
+
+.report-item:last-child {
+    padding-right: 0;
+}
+
+.report-item-box {
+    background: #fff;
+    border-radius: 16px;
+    padding: 20px 42px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.report-item-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-name {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 28px;
+    color: #A3AED0;
+    margin-bottom: 5px;
+}
+
+.report-number {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+.report-item-box .report-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #60A65A;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.report-item-box.incoming-box .report-icon {
+    background: #60A65A;
+}
+
+.report-item-box.outgoing-box .report-icon {
+    background: #856ECE;
+}
+
+.report-item-box.escorts-box .report-icon {
+    background: #88352D;
+}
+
+.topbar-col.monthly-col .topbar-dropdown-toggle {
+    min-width: 90px;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 7px 10px;
+    color: #848FAC;
+}
+
+.topbar-col.monthly-col .topbar-dropdown-arrow {
+    margin-top: -1px;
+}
+
+.column-main-container.graph-section {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.card-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 15px 15px 15px 24px;
+    margin-bottom: 20px;
+}
+
+.card-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    width: 100%;
+}
+
+.card-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.card-body {
+    width: 100%;
+}
+
+.search-section {
+    max-width: 280px;
+    width: 100%;
+}
+
+.search-section .input-group {
+    position: relative;
+}
+
+.search-section .input-field {
+    background: #F7F7F7;
+    border: 1px solid #f7f7f7;
+    border-radius: 8px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    height: 38px;
+    outline: none;
+    padding: 5px 10px 5px 40px;
+    width: 100%;
+}
+
+.search-section .search-icon {
+    background: none;
+    border-radius: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    padding: 8px 12px;
+}
+
+.table {
+    width: 100%;
+}
+
+.tenant-activity-sect .card-body {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.tenant-activity-sect .table {
+    min-width: 800px;
+}
+
+.table tbody td {
+    border-bottom: 1px solid rgba(32, 29, 29, 0.05);
+    font-weight: 500;
+    padding: 10px 5px;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.academy-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.academy-box-img {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tenant-address {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: rgba(32, 29, 29, 0.7);
+}
+
+.tenant-time {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(32, 29, 29, 0.4);
+}
+
+@media screen and (max-width: 992px) {
+    .report-item-box {
+        padding: 15px 20px 15px;
+    }
+    .report-name {
+        margin-bottom: 2px;
+    }
+    .report-item-box .report-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .academy-box {
+        font-size: 16px;
+        gap: 12px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .report-item {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 16px;
+    }
+    .report-name {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .report-number {
+        font-size: 26px;
+        line-height: 30px;
+    }
+    .report-item-box .report-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .report-item-box .report-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+    .column-main-container.graph-section {
+        margin-bottom: 16px;
+    }
+    .card-section {
+        margin-bottom: 16px;
+    }
+    .card-title {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    .search-section {
+        max-width: 240px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .search-section {
+        max-width: 100%;
+    }
+}

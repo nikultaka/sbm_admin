@@ -7,7 +7,7 @@ export async function resolve(promise) {
   try {
     resolved.data = await promise;
   } catch (e) {
-    resolved.error = e;
+    resolved.error = e.response.statusText == 'Unauthorized' ? 'Unauthorized' : e;
   }
 
   return resolved;

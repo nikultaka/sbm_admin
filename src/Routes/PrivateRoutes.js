@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import Building from '../view/building/index'
+import Delivery from '../view/deliveries/index'
 
 export default function PrivateRoutes() {
 
@@ -14,6 +15,7 @@ export default function PrivateRoutes() {
                     <Header />
                     <Routes>
                         <Route path="/building" element={<Building />} />
+                        <Route path="/deliver/:id/:month" element={<Delivery />} />
                         <Route path="*" element={<Building />} />
                     </Routes>
                 </div>
