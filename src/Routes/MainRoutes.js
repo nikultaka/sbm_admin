@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import PrivateRoutes from './PrivateRoutes'
 import AuthRoutes from './AuthRoutes'
 
-
+ 
 export default function MainRoutes() {
     const token = useSelector((state) => state.user.userToken);
 
