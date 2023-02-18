@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import Logo from "../../components/Logo"
 
 
-function Verification() {
+function Verification({checkVerification,email,handleForm,formData}) {
     return (
         <div className="page-wrapper login-pagewrapper">
             <main id="page-main">
@@ -17,22 +17,28 @@ function Verification() {
                                 </svg>
                             </div>
                             <p className="form_title">Verificaton Code</p>
-                            <span className="frgtpsw_txt">We have sent you verification code on your email <b>“eeb34@gmail.com”</b>.</span>
+                            <span className="frgtpsw_txt">We have sent you verification code on your email <b>{email}</b>.</span>
                         </div>
                         <form name="signup" className="sign-up">
                             <div className="form-control">
-                                <input type="number" className="form-input" maxlength="8" value="" placeholder="none" />
+                                <input type="text" className="form-input" name="code" id="code" maxLength="6" minLength="6" placeholder="none" required onChange={handleForm}  />
                                 <label for="email" className="form-label">Verification Code</label>
+                                { !formData.forgot_error && formData.error && formData.error.code && <span className="error-msg">{formData.error.code}</span>}
+                                { formData.forgot_error && <>
+                                    <img className="error-msg-icon" src="../assets/images/Subtract.png" />
+                                    <span className="error-msg" style={{ bottom : "-25px" }}>{formData.forgot_error}</span>
+                                    </>
+                                }
                             </div>
                             <div className="form-action">
-                                <button type="submit" className="form-btn sign-btn">Verify Now</button>
+                                <button type="button" className="form-btn sign-btn" onClick={checkVerification}>Verify Now</button>
                             </div>
                         </form>
                         <div className="action-text">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.0834 7H2.91675" stroke="black" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round" />
                                 <path d="M7.00008 11.0833L2.91675 7L7.00008 2.91667" stroke="black" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg> <span>Wana Change <Link to="/"> Email </Link ></span>
+                            </svg> <span>Wana Change <Link to="/forgot-password"> Email </Link ></span>
                         </div>
                     </div>
                 </div>

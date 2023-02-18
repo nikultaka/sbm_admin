@@ -3,12 +3,31 @@ import { Link } from "react-router-dom"
 import LogoImg from "../assets/images/logo.png"
 import { setLogout } from "../redux/user/user.action"
 import { useDispatch } from "react-redux"
+import { confirmAlert } from 'react-confirm-alert'; 
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 function Sidebar() {
     const dispatch = useDispatch()
 
     const logout = () => {
-        dispatch(setLogout())
+        confirmAlert({
+            title: 'Confirm to logout ?',
+            message: 'Are you sure you want to log out?',
+            buttons: [
+              {
+                label: 'Yes',
+                onClick: () => { 
+                    dispatch(setLogout())
+                }
+              },
+              {
+                label: 'No',
+                onClick: () => {
+                    
+                }
+              }
+            ]
+        });
     }
 
     return (

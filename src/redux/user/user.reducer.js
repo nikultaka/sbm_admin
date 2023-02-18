@@ -3,6 +3,7 @@ import {
   SET_USER_DETAILS,
   SET_LOADER,
   SET_LOGOUT,
+  SET_FORGOT_PASSWROD_EMAIL,
 } from "./user.type";
 import userInitialstate from "./user.initialstate";
 
@@ -30,7 +31,13 @@ const userReducer = (state = userInitialstate, action) => {
         userToken: "",
         userDeatils: "",
       };
-
+      case SET_FORGOT_PASSWROD_EMAIL:
+        return {
+          ...state,
+          isLoading: false,
+          forgotEmail : action.payload,
+        };  
+      
     default:
       return state;
   }

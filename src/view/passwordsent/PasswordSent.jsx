@@ -17,8 +17,8 @@ function PasswordSent() {
                                 </svg>
                             </div>
                             <p className="form_title">New Password Sent</p>
-                            <span className="frgtpsw_txt">It should return your inbox within minutes.</span>
-                        </div>
+                            <span className="frgtpsw_txt">It should reach your inbox within minutes.</span>
+                        </div> 
                     </div>
                 </div>
             </main>

@@ -3,6 +3,7 @@ import {
   SET_USER_DETAILS,
   SET_LOADER,
   SET_LOGOUT,
+  SET_FORGOT_PASSWROD_EMAIL
 } from "./user.type";
 
 export const setToken = (data) => ({
@@ -17,6 +18,11 @@ export const setUserDetails = (data) => ({
 
 export const setLoading = (data) => ({
   type: SET_LOADER,
+  payload: data,
+});
+
+export const setForgotPasswordEmail = (data) => ({
+  type: SET_FORGOT_PASSWROD_EMAIL,
   payload: data,
 });
 

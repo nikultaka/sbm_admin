@@ -12,6 +12,7 @@ import {
     setToken,
     setLoading,
     setUserDetails,
+    setForgotPasswordEmail
 } from "../../redux/user/user.action";
 
 function Index() {
@@ -55,7 +56,7 @@ function Index() {
                 const payload = {
                     email: email
                 }
-                const login = await ApiCall('v1/forgot-password', 'post', payload);
+                const login = await ApiCall('v1/send-email-otp-web', 'post', payload);
                 if (login.error) {
                     dispatch(setLoading(false))
                     console.log(login?.error?.response?.data?.MESSAGE || login.error.message);
@@ -65,12 +66,13 @@ function Index() {
                     });
                 } else {
                     dispatch(setLoading(false))
+                    dispatch(setForgotPasswordEmail(email))
                     setFormData({
                         ...formData,
                         forgot_error : ''
                     });
                     ToastAlert({ title: "Forgot Password", msg: login?.data?.MESSAGE, msgType: "success" })
-                    navigate('/password-sent')
+                    navigate('/verification')
 
                 }
             })

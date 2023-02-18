@@ -3,12 +3,12 @@ import Logo from "../../components/Logo"
 
 function ForgotPassword({sendEmail,handleForm,formData}) {
     
-    return (
+    return ( 
         <div className="page-wrapper login-pagewrapper">
             <main id="page-main">
                 <div className="login-wrapper d-flex justify-content-center align-items-center flex-column">
                     <div className="forgot-container signup-container">
-                        <Logo />
+                        <Link to="/login"><Logo /></Link>
                         <div className="form_info">
                             <div className="key_icon">
                                 <svg width="30" height="29" viewBox="0 0 30 29" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,12 +22,12 @@ function ForgotPassword({sendEmail,handleForm,formData}) {
                             <div className="form-control">
                                 <input type="email" name="email" className="form-input" id="email" placeholder="none" required onChange={handleForm} />
                                 <label for="email" className="form-label">Email address</label>
-                                {formData.error && formData.error.email && <span className="error-msg">{formData.error.email}</span>}
+                                { !formData.forgot_error && formData.error && formData.error.email && <span className="error-msg">{formData.error.email}</span>}
                                 { formData.forgot_error && <>
                                     <img className="error-msg-icon" src="../assets/images/Subtract.png" />
                                     <span className="error-msg" style={{ bottom : "-39px" }}>{formData.forgot_error}</span>
                                     </>
-                                }
+                                } 
                             </div>
                             <div className="form-action">
                                 <button type="button" className="form-btn sign-btn" onClick={sendEmail}>Reset Password</button>

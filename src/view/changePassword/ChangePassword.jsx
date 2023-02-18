@@ -1,13 +1,14 @@
 import Logo from "../../components/Logo"
+import { Link } from "react-router-dom"
 
-function ChangePassword() {
-
+function ChangePassword({handleForm,formData,updatePassword,showPassword,showPasswordConfirm}) {
+ 
     return (
         <div className="page-wrapper signup-pagewrapper">
             <main id="page-main">
                 <div className="login-wrapper">
                     <div className="change_psw_container signup-container">
-                        <Logo/>
+                        <Link to="/login"><Logo/></Link>
                         <div className="form_info">
                             <div className="key_icon">
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,25 +21,37 @@ function ChangePassword() {
                         </div>
                         <form name="signup" className="sign-up">
                             <div className="form-control">
-                                <input type="password" name="password" className="form-input" placeholder="none" required />
+                                <input type={formData.input_type ? 'password':'text'} name="password" id="password" className="form-input" placeholder="none" required onChange={handleForm}  />
                                 <label for="password" className="form-label">New Password</label>
-                                <span className="psw-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <span className="psw-icon" onClick={showPassword}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.9834 10C12.9834 11.65 11.6501 12.9833 10.0001 12.9833C8.35006 12.9833 7.01672 11.65 7.01672 10C7.01672 8.35 8.35006 7.01667 10.0001 7.01667C11.6501 7.01667 12.9834 8.35 12.9834 10Z" stroke="#201D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M9.99999 16.8917C12.9417 16.8917 15.6833 15.1583 17.5917 12.1583C18.3417 10.9833 18.3417 9.00833 17.5917 7.83333C15.6833 4.83333 12.9417 3.1 9.99999 3.1C7.05833 3.1 4.31666 4.83333 2.40833 7.83333C1.65833 9.00833 1.65833 10.9833 2.40833 12.1583C4.31666 15.1583 7.05833 16.8917 9.99999 16.8917Z" stroke="#201D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 </span>
+                                { !formData.forgot_error && formData.error && formData.error.password && <span className="error-msg">{formData.error.password}</span>}
+                                { formData.forgot_error && <>
+                                    <img className="error-msg-icon" src="../assets/images/Subtract.png" />
+                                    <span className="error-msg" style={{ bottom : "-25px" }}>{formData.forgot_error}</span>
+                                    </>
+                                }
                             </div>
                             <div className="form-control">
-                                <input type="password" name="password" className="form-input" placeholder="none" required />
+                                <input type={formData.input_type_confirm ? 'password':'text'} name="confirmPassword" id="confirmPassword" className="form-input" placeholder="none" required onChange={handleForm}  />
                                 <label for="password" className="form-label">Confirm-New Password</label>
-                                <span className="psw-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <span className="psw-icon" onClick={showPasswordConfirm}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.9834 10C12.9834 11.65 11.6501 12.9833 10.0001 12.9833C8.35006 12.9833 7.01672 11.65 7.01672 10C7.01672 8.35 8.35006 7.01667 10.0001 7.01667C11.6501 7.01667 12.9834 8.35 12.9834 10Z" stroke="#201D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M9.99999 16.8917C12.9417 16.8917 15.6833 15.1583 17.5917 12.1583C18.3417 10.9833 18.3417 9.00833 17.5917 7.83333C15.6833 4.83333 12.9417 3.1 9.99999 3.1C7.05833 3.1 4.31666 4.83333 2.40833 7.83333C1.65833 9.00833 1.65833 10.9833 2.40833 12.1583C4.31666 15.1583 7.05833 16.8917 9.99999 16.8917Z" stroke="#201D1D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 </span>
+                                { !formData.forgot_error && formData.error && formData.error.confirmPassword && <span className="error-msg">{formData.error.confirmPassword}</span>}
+                                { formData.forgot_error && <>
+                                    <img className="error-msg-icon" src="../assets/images/Subtract.png" />
+                                    <span className="error-msg" style={{ bottom : "-25px" }}>{formData.forgot_error}</span>
+                                    </>
+                                }
                             </div>
                             <div className="form-action">
-                                <button type="submit" className="form-btn sign-btn">Verify Now</button>
+                                <button type="button" className="form-btn sign-btn" onClick={updatePassword}>Verify Now</button>
                             </div>
                         </form>
                     </div>

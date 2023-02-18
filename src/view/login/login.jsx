@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import Logo from "../../components/Logo"
 
-function Login({ formData, handleForm, submitForm, showPassword }) {
+function Login({ formData, handleForm, submitForm, showPassword }) { 
     return (
         <div className="page-wrapper signup-pagewrapper">
             <main id="page-main">
