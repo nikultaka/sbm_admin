@@ -45,12 +45,13 @@ function Index() {
     const updatePassword = () => {
         const rules = {
             password: "required",
-            confirmPassword : "required"
+            confirmPassword : "required|same:password"
         };
 
         const message = {
             "password.required": "Password " + Messages.IS_REQUIRED,
             "confirmPassword.required": "Confirm Password " + Messages.IS_REQUIRED,
+            "confirmPassword.same": "Confirm Password must be same as password",
         };
 
         validateAll(formData, rules, message)
