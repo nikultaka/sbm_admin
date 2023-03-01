@@ -19,7 +19,7 @@ function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort,
                     <div className="column-main-title">
                         <h2 className="column-title">Sites</h2>
                     </div>
-                    <div className="column-topbar-right">
+                    <div className="column-topbar-right" style={{ display:'none' }}>
                         <div className="topbar-col sitename-col">
                             <div className="topbar-icon-col">
                                 <img src={buildingSVGImage} alt="building" width="16" height="16" />
@@ -87,11 +87,11 @@ function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort,
                                                         <span className="icon"><img src={LocationImage} alt="Location" width="17" height="17" /></span>
                                                         <span className="text">{building.full_address}</span>
                                                     </div>
-                                                    <div className="site-item-time">
+                                                    <div className="site-item-time" style={{ display:'none' }}>
                                                         <span className="icon"><img src={clockImage} alt="clock" width="15" height="15" /></span>
                                                         <span className="text">-</span>
                                                     </div>
-                                                    <div className="site-user-detail">
+                                                    <div className="site-user-detail" style={{ display:'none' }}>
                                                         <div className="site-user-left">
                                                             <span className="icon"><img src={userImage} alt="User" width="35" height="35" /></span>
                                                             <span className="text">{building?.buildingmanager != null && building?.buildingmanager?.users.name}</span>

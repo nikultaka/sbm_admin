@@ -3,3 +3,4 @@ export const SET_TOKEN = "SET_TOKEN";
 export const SET_LOADER = "SET_LOADER";
 export const SET_LOGOUT = "SET_LOGOUT";
 export const SET_FORGOT_PASSWROD_EMAIL = "SET_FORGOT_PASSWROD_EMAIL";
+export const SET_PASSWORD_TOKEN = "SET_PASSWORD_TOKEN";

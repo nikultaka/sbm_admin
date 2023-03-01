@@ -11,7 +11,8 @@ import {
     setToken,
     setLoading,
     setUserDetails,
-    setForgotPasswordEmail
+    setForgotPasswordEmail,
+    setChangePasswordToken
 } from "../../redux/user/user.action";
 import ToastAlert from "../../common/ToastAlert";
 import ApiCall from "../../Api/index"
@@ -59,7 +60,7 @@ function Index() {
                 });
                 dispatch(setLoading(true))
                 const payload = {
-                    email: email,
+                    email: email, 
                     otp : code
                 }
                 console.log(payload);
@@ -72,6 +73,7 @@ function Index() {
                         forgot_error: login?.error?.response?.data?.MESSAGE || login.error.message,
                     });
                 } else {
+                    dispatch(setChangePasswordToken(login?.data?.RESULT))
                     dispatch(setLoading(false))
                     setFormData({
                         ...formData,
@@ -80,8 +82,9 @@ function Index() {
                     ToastAlert({ title: "Verification Code", msg: login?.data?.MESSAGE, msgType: "success" })
                     navigate('/change-password')
                 }
-            })
+            }) 
             .catch((errors) => {
+                dispatch(setLoading(false))
                 const formaerrror = {};
                 if (errors.length) {
                     errors.forEach(function (value) {

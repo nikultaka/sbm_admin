@@ -14,7 +14,8 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import { useParams } from 'react-router';
-import {useRef} from 'react';
+import {useRef,useState,useEffect} from 'react';
+import ReactPaginate from 'react-paginate';
 
 ChartJS.register(
     CategoryScale,
@@ -24,12 +25,32 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+   
 
+function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,logs }) {
 
-function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData }) {
-
+    //const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    //console.log("logData",logData);
     const { id, month } = useParams();
     const ref = useRef(null);
+    const itemsPerPage = 10;
+    const [itemOffset, setItemOffset] = useState(0);
+    const endOffset = itemOffset + itemsPerPage;
+    const [logData,setLogData] = useState([]);
+    const [pageCount,setPageCount] = useState();
+    const [allLogs,setAllLogs] = useState();
+
+    useEffect(() => {
+        console.log("assssd",logs)
+        console.log(itemOffset,endOffset)
+        const currentItems = logs?.slice(itemOffset, endOffset);
+        const pageCount = Math.ceil(logs?.length / itemsPerPage);
+        console.log("currentItems",currentItems)
+        setPageCount(pageCount);
+        setLogData(currentItems);
+        setAllLogs(logs);
+    }, [logs])
+    
 
     const options = {
         plugins: {
@@ -86,7 +107,26 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData })
         ],
     };
 
-    console.log("data", data)
+    //console.log("data", data)
+
+    
+
+    const handlePageClick = (event) => {
+        console.log('logs',logs);
+        const newOffset = (event.selected * itemsPerPage) % logs.length;
+        console.log(
+        `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+        const endOffset = newOffset + itemsPerPage;
+        console.log("asassa",newOffset,endOffset)
+        let currentItems = logs?.slice(newOffset, endOffset);
+        console.log(currentItems)
+        setLogData(currentItems);
+    };
+
+
+    
 
 
     return (
@@ -198,98 +238,70 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData })
                 <div className="card-body">
                     <table className="table">
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div className="academy-box">
+                            {
+                                logData?.map(function(activity, i){
+                                return(<tr key={i}>
+                                    <td>
                                         <div className="academy-box-img">
-                                            <img src={academyImage} alt="academy" width="46" height="46" />
+                                            {
+                                                activity?.picture ?
+                                                <img src={activity?.picture} alt="" width="46" height="46" />
+                                                :
+                                                <img src={buildingImage} alt="" width="46" height="46" />
+                                            }
+                                            
                                         </div>
+                                    </td>
+                                    <td>
                                         <div className="academy-box-name">
-                                            MD’s Academy
+                                            {
+                                                activity?.type 
+                                            }
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tenant-address">House No.163, Street No.3, Jordan Town, New York, United Kingdom</div>
-                                </td>
-                                <td className="text-right">
-                                    <div className="tenant-time">17 hours ago.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="academy-box">
-                                        <div className="academy-box-img">
-                                            <img src={academyImage} alt="academy" width="46" height="46" />
+                                    </td>
+                                    <td>
+                                        <div className="tenant-address">
+                                            {
+                                                activity?.tenant
+                                            }
                                         </div>
+                                    </td>
+                                    <td>
+                                        <div className="tenant-address">
+                                            {
+                                                activity?.tenant_contact
+                                            }
+                                        </div>
+                                    </td>
+                                    <td>
                                         <div className="academy-box-name">
-                                            MD’s Academy
+                                            {
+                                                activity?.status
+                                            }
                                         </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tenant-address">House No.163, Street No.3, Jordan Town, New York, United Kingdom</div>
-                                </td>
-                                <td className="text-right">
-                                    <div className="tenant-time">17 hours ago.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="academy-box">
-                                        <div className="academy-box-img">
-                                            <img src={academyImage} alt="academy" width="46" height="46" />
+                                    </td>
+                                    <td className="text-right">
+                                        <div className="tenant-time">
+                                            {
+                                                activity?.time
+                                            }
                                         </div>
-                                        <div className="academy-box-name">
-                                            MD’s Academy
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tenant-address">House No.163, Street No.3, Jordan Town, New York, United Kingdom</div>
-                                </td>
-                                <td className="text-right">
-                                    <div className="tenant-time">17 hours ago.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="academy-box">
-                                        <div className="academy-box-img">
-                                            <img src={academyImage} alt="academy" width="46" height="46" />
-                                        </div>
-                                        <div className="academy-box-name">
-                                            MD’s Academy
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tenant-address">House No.163, Street No.3, Jordan Town, New York, United Kingdom</div>
-                                </td>
-                                <td className="text-right">
-                                    <div className="tenant-time">17 hours ago.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div className="academy-box">
-                                        <div className="academy-box-img">
-                                            <img src={academyImage} alt="academy" width="46" height="46" />
-                                        </div>
-                                        <div className="academy-box-name">
-                                            MD’s Academy
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div className="tenant-address">House No.163, Street No.3, Jordan Town, New York, United Kingdom</div>
-                                </td>
-                                <td className="text-right">
-                                    <div className="tenant-time">17 hours ago.</div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>)
+                                })
+                            }
                         </tbody>
                     </table>
+                    <ReactPaginate
+                        breakLabel="..."
+                        nextLabel="next >"
+                        onPageChange={handlePageClick}
+                        pageRangeDisplayed={5}
+                        pageCount={pageCount}
+                        previousLabel="< previous"
+                        renderOnZeroPageCount={null}
+                        className='pagination'
+                    />
                 </div>
             </div>
 

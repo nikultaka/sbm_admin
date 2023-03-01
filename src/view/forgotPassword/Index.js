@@ -12,7 +12,8 @@ import {
     setToken,
     setLoading,
     setUserDetails,
-    setForgotPasswordEmail
+    setForgotPasswordEmail,
+    setChangePasswordToken,
 } from "../../redux/user/user.action";
 
 function Index() {
@@ -77,6 +78,7 @@ function Index() {
                 }
             })
             .catch((errors) => {
+                dispatch(setLoading(false))
                 const formaerrror = {};
                 if (errors.length) {
                     errors.forEach(function (value) {

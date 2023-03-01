@@ -19,6 +19,7 @@ function Index() {
   const [sort, setSort] = useState(false)
   const [sortType, setSortType] = useState(2)
   const ref = useRef(null);
+  const [logData,setLogData] = useState();
 
   const graphFilter = (id) => {
     setSort(!sort)
@@ -38,14 +39,31 @@ function Index() {
           dispatch(setLogout())
         }
         setDeliveryCount([])
-      }
+      }   
     })()
   }, [])
 
+  useEffect(() => {
+    (async () => {
+      const activity = await ApiCall('v1/manage-package-web/activity/log/'+id, 'get', null, token);
+      console.log("activity",activity?.data);
+      if (activity?.data) {
+        setLogData(activity?.data?.RESULT);
+      } else {
+        if (activity.error == 'Unauthorized') {
+          dispatch(setLogout())
+        }
+        setLogData([])
+      }   
+    })()
+
+  }, [id])
+  
+ 
   // console.log(token)
 
   return (
-    <Delivery deliveryCount={deliveryCount} graphFilter={graphFilter} sort={sort} sortType={sortType} graphFilterData={graphFilterData} />
+    <Delivery deliveryCount={deliveryCount} graphFilter={graphFilter} sort={sort} sortType={sortType} graphFilterData={graphFilterData} logs={logData} />
   )
 }
 export default Index

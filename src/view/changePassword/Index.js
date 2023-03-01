@@ -17,13 +17,16 @@ import ApiCall from "../../Api/index"
 function Index() {
 
     const email = useSelector((state) => state.user.forgotEmail);
+    const token = useSelector((state) => state.user.token);
     const [forgotEmail, setForgotEmail] = useState(null);
+    const [forgotToken, setForgotToken] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate()
 
     useEffect(() => {
         setForgotEmail(email);
-    }, [email])
+        setForgotToken(token);
+    }, [email,token])
 
     const [formData, setFormData] = useState({
         password: "",
@@ -63,7 +66,8 @@ function Index() {
                 dispatch(setLoading(true))
                 const payload = {
                     email: email,
-                    password : password
+                    password : password,
+                    token : token
                 }
                 console.log(payload);
                 const login = await ApiCall('v1/change-password-web', 'post', payload);
@@ -87,7 +91,8 @@ function Index() {
                 }
             })
             .catch((errors) => {
-                const formaerrror = {};
+                dispatch(setLoading(false))
+                const formaerrror = {}; 
                 if (errors.length) {
                     errors.forEach(function (value) {
                         formaerrror[value.field] = value.message;
