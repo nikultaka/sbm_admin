@@ -47,7 +47,7 @@ function Index() {
     // console.log(token)
 
     return (
-        <Building siteName={siteName} siteNameDropdown={showHideSiteNameDropdown} location={location} locatonDropdown={showHideLocationDropdown} sort={sort} sortDropdown={showHideSortDropdown} buildingList={building} delivery={delivery} />
+        <Building siteName={siteName} siteNameDropdown={showHideSiteNameDropdown} location={location} locatonDropdown={showHideLocationDropdown} sort={sort} sortDropdown={showHideSortDropdown} buildingListData={building} delivery={delivery} />
     )
 }
 export default Index

@@ -8,9 +8,29 @@ import userImage from "../../assets/images/david-user.png"
 import buildingSVGImage from "../../assets/images/building.svg"
 import arrowDownImage from "../../assets/images/arrow-down.svg"
 import sortImage from "../../assets/images/sort.svg"
+import React, { useState,useEffect } from "react";
 
-function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort, sortDropdown, buildingList, delivery }) {
+function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort, sortDropdown, buildingListData, delivery }) {
 
+    const [search, setSearch] = useState();
+    const [buildingList,setBuildingList] = useState([]);
+
+    useEffect(() => {
+        setBuildingList(buildingListData);
+    }, [buildingListData])
+    
+    const serachLog = (e) => {
+        setSearch(e.target.value)
+        console.log(e.target.value);
+        console.log(buildingListData)
+        if (e.target.value) {
+            const filtered = buildingListData.filter(entry => Object.values(entry).some(val => val?.toString()?.toLowerCase().trim().includes(e.target.value.toLowerCase().trim())));
+            setBuildingList(filtered)
+            console.log(e.target.value);
+        } else {
+            setBuildingList(buildingListData);
+        }
+    }
 
     return (
         <div className="column-main-wrapper">
@@ -18,9 +38,20 @@ function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort,
                 <div className="column-topbar-section">
                     <div className="column-main-title">
                         <h2 className="column-title">Sites</h2>
+                        
                     </div>
-                    <div className="column-topbar-right" style={{ display:'none' }}>
-                        <div className="topbar-col sitename-col">
+                    <div className="column-topbar-right">
+                        <div className="search-section" style={{float:'right'}}>
+                            <div className="input-group">
+                                <input id="search" className="input-field" type="text" placeholder="Search here..." name="Search" value={search} onChange={serachLog} />
+                                <button className="btn search-icon">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.33268 15.0003C9.81183 15 11.2484 14.5049 12.4135 13.5937L16.0768 17.257L17.2552 16.0787L13.5919 12.4153C14.5035 11.25 14.999 9.81319 14.9994 8.33366C14.9994 4.65783 12.0085 1.66699 8.33268 1.66699C4.65685 1.66699 1.66602 4.65783 1.66602 8.33366C1.66602 12.0095 4.65685 15.0003 8.33268 15.0003ZM8.33268 3.33366C11.0902 3.33366 13.3327 5.57616 13.3327 8.33366C13.3327 11.0912 11.0902 13.3337 8.33268 13.3337C5.57518 13.3337 3.33268 11.0912 3.33268 8.33366C3.33268 5.57616 5.57518 3.33366 8.33268 3.33366Z" fill="#201D1D" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div className="topbar-col sitename-col" style={{ display:'none' }}>
                             <div className="topbar-icon-col">
                                 <img src={buildingSVGImage} alt="building" width="16" height="16" />
                             </div>
@@ -37,7 +68,7 @@ function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort,
                                 </ul>
                             </div>
                         </div>
-                        <div className="topbar-col location-col">
+                        <div className="topbar-col location-col" style={{ display:'none' }}>
                             <div className="topbar-icon-col">
                                 <img src={LocationImage} alt="location" width="16" height="16" />
                             </div>
@@ -53,7 +84,7 @@ function Building({ siteName, siteNameDropdown, location, locatonDropdown, sort,
                                 </ul>
                             </div>
                         </div>
-                        <div className="topbar-col sort-col">
+                        <div className="topbar-col sort-col" style={{ display:'none' }}>
                             <div className="topbar-dropdown" onClick={sortDropdown}>
                                 <div className="topbar-dropdown-toggle">
                                     <img src={sortImage} alt="sort" width="16" height="16" />

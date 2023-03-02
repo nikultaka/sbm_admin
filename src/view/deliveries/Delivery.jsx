@@ -14,7 +14,7 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import { useParams } from 'react-router';
-import {useRef,useState,useEffect} from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
 ChartJS.register(
@@ -25,9 +25,9 @@ ChartJS.register(
     Tooltip,
     Legend
 );
-   
 
-function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,logs }) {
+
+function Delivery({ deliveryCount, graphFilter, sort, sortType, graphFilterData, logs }) {
 
     //const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     //console.log("logData",logData);
@@ -36,21 +36,39 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,lo
     const itemsPerPage = 10;
     const [itemOffset, setItemOffset] = useState(0);
     const endOffset = itemOffset + itemsPerPage;
-    const [logData,setLogData] = useState([]);
-    const [pageCount,setPageCount] = useState();
-    const [allLogs,setAllLogs] = useState();
+    const [logData, setLogData] = useState([]);
+    const [pageCount, setPageCount] = useState();
+    const [allLogs, setAllLogs] = useState();
+    const [search, setSearch] = useState();
 
     useEffect(() => {
-        console.log("assssd",logs)
-        console.log(itemOffset,endOffset)
+        console.log("assssd", logs)
+        console.log(itemOffset, endOffset)
         const currentItems = logs?.slice(itemOffset, endOffset);
         const pageCount = Math.ceil(logs?.length / itemsPerPage);
-        console.log("currentItems",currentItems)
+        console.log("currentItems", currentItems)
         setPageCount(pageCount);
         setLogData(currentItems);
         setAllLogs(logs);
     }, [logs])
-    
+
+    const serachLog = (e) => {
+        setSearch(e.target.value)
+        if (e.target.value) {
+            const filtered = allLogs.filter(entry => Object.values(entry).some(val => val.toLowerCase().trim().includes(e.target.value.toLowerCase().trim())));
+            setLogData(filtered)
+            const currentItems = filtered?.slice(itemOffset, endOffset);
+            const pageCount = Math.ceil(filtered?.length / itemsPerPage);
+            setPageCount(pageCount);
+        } else {
+            setLogData(allLogs)
+            const currentItems = allLogs?.slice(itemOffset, endOffset);
+            const pageCount = Math.ceil(allLogs?.length / itemsPerPage);
+            setPageCount(pageCount);
+        }
+
+    }
+
 
     const options = {
         plugins: {
@@ -109,24 +127,24 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,lo
 
     //console.log("data", data)
 
-    
+
 
     const handlePageClick = (event) => {
-        console.log('logs',logs);
-        const newOffset = (event.selected * itemsPerPage) % logs.length;
+        console.log('logs', allLogs);
+        const newOffset = (event.selected * itemsPerPage) % allLogs.length;
         console.log(
-        `User requested page number ${event.selected}, which is offset ${newOffset}`
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
         );
         setItemOffset(newOffset);
         const endOffset = newOffset + itemsPerPage;
-        console.log("asassa",newOffset,endOffset)
-        let currentItems = logs?.slice(newOffset, endOffset);
+        console.log("asassa", newOffset, endOffset)
+        let currentItems = allLogs?.slice(newOffset, endOffset);
         console.log(currentItems)
         setLogData(currentItems);
     };
 
 
-    
+
 
 
     return (
@@ -203,7 +221,7 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,lo
                         <div className="topbar-col monthly-col">
                             <div className="topbar-dropdown" ref={ref} onClick={() => graphFilter()}>
                                 <div className="topbar-dropdown-toggle">
-                                    <span className="topbar-dropdown-text">{ sortType == '1' ? "Monthly" : "Yearly" }</span>
+                                    <span className="topbar-dropdown-text">{sortType == '1' ? "Monthly" : "Yearly"}</span>
                                     <span className="topbar-dropdown-arrow"><img src={arrowDownImage} alt="Arrow" width="12" height="12" /></span>
                                 </div>
                                 <ul className={sort ? "topbar-dropdown-items dropdown-active" : "topbar-dropdown-items"}>
@@ -225,7 +243,7 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,lo
                     <div className="search-section">
                         <form>
                             <div className="input-group">
-                                <input id="search" className="input-field" type="text" placeholder="Search here..." name="Search" />
+                                <input id="search" className="input-field" type="text" placeholder="Search here..." name="Search" value={search} onChange={serachLog} />
                                 <button className="btn search-icon">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8.33268 15.0003C9.81183 15 11.2484 14.5049 12.4135 13.5937L16.0768 17.257L17.2552 16.0787L13.5919 12.4153C14.5035 11.25 14.999 9.81319 14.9994 8.33366C14.9994 4.65783 12.0085 1.66699 8.33268 1.66699C4.65685 1.66699 1.66602 4.65783 1.66602 8.33366C1.66602 12.0095 4.65685 15.0003 8.33268 15.0003ZM8.33268 3.33366C11.0902 3.33366 13.3327 5.57616 13.3327 8.33366C13.3327 11.0912 11.0902 13.3337 8.33268 13.3337C5.57518 13.3337 3.33268 11.0912 3.33268 8.33366C3.33268 5.57616 5.57518 3.33366 8.33268 3.33366Z" fill="#201D1D" />
@@ -239,56 +257,58 @@ function Delivery({ deliveryCount, graphFilter, sort,sortType,graphFilterData,lo
                     <table className="table">
                         <tbody>
                             {
-                                logData?.map(function(activity, i){
-                                return(<tr key={i}>
-                                    <td>
-                                        <div className="academy-box-img">
-                                            {
-                                                activity?.picture ?
-                                                <img src={activity?.picture} alt="" width="46" height="46" />
-                                                :
-                                                <img src={buildingImage} alt="" width="46" height="46" />
-                                            }
-                                            
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="academy-box-name">
-                                            {
-                                                activity?.type 
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="tenant-address">
-                                            {
-                                                activity?.tenant
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="tenant-address">
-                                            {
-                                                activity?.tenant_contact
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="academy-box-name">
-                                            {
-                                                activity?.status
-                                            }
-                                        </div>
-                                    </td>
-                                    <td className="text-right">
-                                        <div className="tenant-time">
-                                            {
-                                                activity?.time
-                                            }
-                                        </div>
-                                    </td>
-                                </tr>)
+                                logData?.length > 0 ?
+                                logData?.map(function (activity, i) {
+                                    return (<tr key={i}>
+                                        <td width="15%">
+                                                {
+                                                    activity?.picture ?
+                                                        <img src={activity?.picture} alt="" style={{width:"20%"}} />
+                                                        :
+                                                        <img src={buildingImage} alt="" style={{width:"20%"}}  />
+                                                }
+                                        </td>
+                                        <td width="10%">
+                                            <div className="academy-box-name">
+                                                {
+                                                    activity?.type
+                                                }
+                                            </div>
+                                        </td>
+                                        <td width="20%">
+                                            <div className="tenant-address">
+                                                {
+                                                    activity?.tenant
+                                                }
+                                            </div>
+                                        </td>
+                                        <td width="20%">
+                                            <div className="tenant-address">
+                                                {
+                                                    activity?.tenant_contact
+                                                }
+                                            </div>
+                                        </td>
+                                        <td width="10%">
+                                            <div className="academy-box-name">
+                                                {
+                                                    activity?.status
+                                                }
+                                            </div>
+                                        </td>
+                                        <td className="text-right" width="10%">
+                                            <div className="tenant-time">
+                                                {
+                                                    activity?.time
+                                                }
+                                            </div>
+                                        </td>
+                                    </tr>)
                                 })
+                                :
+                                <tr>
+                                    <td>No activity found</td>
+                                </tr>
                             }
                         </tbody>
                     </table>
